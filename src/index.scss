@@ -1,0 +1,30 @@
+body {
+  display: flex;
+  backface-visibility: hidden;
+
+  div {
+    color: black;
+  }
+}
+#id1 {
+  width: 500px;
+  height: 600px;
+  background-image: url('./s1.jpg');
+  background-size: 100% 100%;
+}
+#id2 {
+  width: 500px;
+  height: 600px;
+  background-image: url('./s2.jpg');
+  background-size: 100% 100%;
+}
+#id3 {
+  width: 500px;
+  height: 600px;
+  background-image: url('./s3.jpg');
+  background-size: 100% 100%;
+}
+img {
+  width: 200px;
+  height: 200px;
+}

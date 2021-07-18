@@ -1,0 +1,45 @@
+{
+  "name": "moban",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "webpack serve --open"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cnpm": "^7.0.0",
+    "css-loader": "^6.0.0",
+    "less": "^4.1.1",
+    "less-loader": "^10.0.1",
+    "scss-loader": "0.0.1",
+    "style-loader": "^3.1.0"
+  },
+  "devDependencies": {
+    "css-minimizer-webpack-plugin": "^3.0.2",
+    "file-loader": "^6.2.0",
+    "html-loader": "^2.1.2",
+    "html-webpack-plugin": "^5.3.2",
+    "mini-css-extract-plugin": "^2.1.0",
+    "node-sass": "^6.0.1",
+    "postcss": "^8.3.5",
+    "postcss-loader": "^6.1.1",
+    "sass-loader": "^12.1.0",
+    "webpack": "^5.45.1",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "browserslist": {
+    "development": [
+      "last 1 chrome version",
+      "last 1 safari version",
+      "last 1 firefox version"
+    ],
+    "production": [
+      ">0.2%",
+      "not dead"
+    ]
+  }
+}
