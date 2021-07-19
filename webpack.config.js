@@ -11,7 +11,7 @@ module.exports = {
     //输出文件名
     filename: 'main.js',
     path: resolve(__dirname, 'build'),
-    assetModuleFilename: 'assets/[hash][ext][query]',
+    assetModuleFilename: 'assets/imgs/[hash:2][ext]',
   },
   //loader配置
   module: {
@@ -64,6 +64,9 @@ module.exports = {
       {
         test: /\.(png|jpe?g|gif)$/i,
         type: 'asset/resource',
+        // options: {
+        //   filename: 'imgs',
+        // },
       },
       {
         test: /\.html$/i,
@@ -76,12 +79,47 @@ module.exports = {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: 'asset/resource',
       },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'eslint-loader',
+        options: {
+          fix: true,
+        },
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        options: {
+          presets: [
+            [
+              '@babel/preset-env',
+              {
+                useBuiltIns: 'usage',
+                corejs: {
+                  version: 3,
+                },
+                targets: {
+                  chrome: '60',
+                  firefox: '50',
+                  ie: '8',
+                },
+              },
+            ],
+          ],
+        },
+      },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
       //需要一个模板
       template: './src/index.html',
+      minify: {
+        collapseWhitespace: true,
+        removeComments: true,
+      },
     }),
     new MiniCssExtractPlugin({
       filename: 'assets/css/build.css',
@@ -99,4 +137,16 @@ module.exports = {
     port: 8080,
     open: true,
   },
+  performance: {
+    hints: 'warning',
+    //入口起点的最大体积
+    maxEntrypointSize: 50000000,
+    //生成文件的最大体积
+    maxAssetSize: 30000000,
+    //只给出 js 文件的性能提示
+    assetFilter: function (assetFilename) {
+      return assetFilename.endsWith('.js')
+    },
+  },
+  mode: 'production',
 }
