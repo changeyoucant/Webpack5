@@ -13,6 +13,7 @@ module.exports = {
     path: resolve(__dirname, 'build'),
     assetModuleFilename: 'assets/imgs/[hash:2][ext]',
   },
+  target: 'web',
   //loader配置
   module: {
     rules: [
@@ -87,29 +88,30 @@ module.exports = {
           fix: true,
         },
       },
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader',
-        options: {
-          presets: [
-            [
-              '@babel/preset-env',
-              {
-                useBuiltIns: 'usage',
-                corejs: {
-                  version: 3,
-                },
-                targets: {
-                  chrome: '60',
-                  firefox: '50',
-                  ie: '8',
-                },
-              },
-            ],
-          ],
-        },
-      },
+      //   不隐藏会一直刷新 但是不知道原因  --！
+      //   {
+      //     test: /\.js$/,
+      //     exclude: /node_modules/,
+      //     loader: 'babel-loader',
+      //     options: {
+      //       presets: [
+      //         [
+      //           '@babel/preset-env',
+      //           {
+      //             useBuiltIns: 'usage',
+      //             corejs: {
+      //               version: 3,
+      //             },
+      //             targets: {
+      //               chrome: '60',
+      //               firefox: '50',
+      //               ie: '8',
+      //             },
+      //           },
+      //         ],
+      //       ],
+      //     },
+      //   },
     ],
   },
   plugins: [
