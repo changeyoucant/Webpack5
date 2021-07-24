@@ -148,5 +148,4 @@ module.exports = {
       return assetFilename.endsWith('.js')
     },
   },
-  mode: 'production',
 }
